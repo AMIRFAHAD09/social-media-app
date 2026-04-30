@@ -10,7 +10,8 @@ function Profile() {
   const navigate = useNavigate()
   const {token,userData,setUserData} = useAuth();
   const[image,setImage] = useState("")
-
+//update profile
+  const[profileData,setProfileData] = useState({username:"",image:"",dob:"",bio:""})
   const handleImageChange = async(e) => {
     const file = e.target.files[0];
 
@@ -39,8 +40,7 @@ function Profile() {
   
   // console.log(data)
 
-  //update profile
-  const[profileData,setProfileData] = useState({username:"",image:"",dob:"",bio:""})
+  
   useEffect(() => {
     if (userData) {
       setProfileData({

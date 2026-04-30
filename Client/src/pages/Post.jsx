@@ -40,7 +40,7 @@ function Post() {
           ...prev,
           postImage: imageUrl
         }));
-        console.log(createPost)
+        // console.log(createPost)
       } catch (error) {
         console.log("error when upload image for post", error);
       } finally {
