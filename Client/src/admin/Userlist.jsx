@@ -8,7 +8,7 @@ function Userlist() {
 
     const getUserList = async()=>{
         try {
-            const res = await axios.get("http://localhost:2000/api/admin/users");
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/users`);
 
             setUserlist(res.data);
             // console.log(userlist)
@@ -21,7 +21,7 @@ function Userlist() {
     //delete users
     const handleDelete = async(id)=>{
         try {
-            await axios.delete(`http://localhost:2000/api/admin/users/delete/${id}`)
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/admin/users/delete/${id}`)
             toast.success("user delete")
             // setUserlist(prev=>prev.filter(p =>p._id!== id))
         } catch (error) {
