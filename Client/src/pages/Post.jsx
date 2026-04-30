@@ -62,7 +62,7 @@ function Post() {
     const handlePost = async (e) => {
         e.preventDefault();
        try {
-        const res =  await axios.post('http://localhost:2000/api/post/create',createPost , {
+        const res =  await axios.post(`${import.meta.env.VITE_API_URL}/api/post/create`,createPost , {
             headers: { Authorization: token }
           });
           console.log(res)

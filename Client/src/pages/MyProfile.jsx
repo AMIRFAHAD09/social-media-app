@@ -42,7 +42,7 @@ function MyProfile() {
     useEffect(()=>{
       if(!id) return;
       const fetchUser = async()=>{
-        const res = await axios.get(`http://localhost:2000/api/auth/user/${id}`)
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/auth/user/${id}`)
         setOtherUser(res.data.user);
         setOtherPosts(res.data.posts);
         // console.log(res.data)
@@ -59,7 +59,7 @@ function MyProfile() {
         // console.log(id)
         try {
           const res = await axios.put(
-            `http://localhost:2000/api/auth/follow/${id}`,
+            `${import.meta.env.VITE_API_URL}/api/auth/follow/${id}`,
             {
               userId: userData._id
             }

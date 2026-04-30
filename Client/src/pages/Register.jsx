@@ -28,7 +28,7 @@ function Register() {
         // console.log(userData)
         try {
           const response = await axios.post(
-            "http://localhost:2000/api/auth/register",
+            `${import.meta.env.VITE_API_URL}/api/auth/register`,
             userData
           );
           toast.success("Register successfully")

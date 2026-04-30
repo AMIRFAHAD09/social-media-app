@@ -24,7 +24,7 @@ function SinglePost() {
 
     const handleDelete = async()=>{
        try {
-        await axios.delete(`http://localhost:2000/api/post/${singlePost._id}`)
+        await axios.delete(`${import.meta.env.VITE_API_URL}/api/post/${singlePost._id}`)
 
         // 🔥 Remove deleted post from state
        setPost(prev => prev.filter(p => p._id !== singlePost._id))

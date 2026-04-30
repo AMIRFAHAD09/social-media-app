@@ -15,7 +15,7 @@ export const AuthProvider = ({children})=>{
         const fetchData = async () => {
           if (!token) return;
           try {
-            const response = await axios.get("http://localhost:2000/api/auth/user",
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/auth/user`,
               {
                 headers: {
                   Authorization: token
@@ -34,7 +34,7 @@ export const AuthProvider = ({children})=>{
       const[posts,setPost]= useState([])
       const getMyPost = async()=>{
         try {
-          const res = await axios.get("http://localhost:2000/api/post/get",
+          const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/post/get`,
             {
               headers:{
                 Authorization:token
@@ -62,7 +62,7 @@ export const AuthProvider = ({children})=>{
          const findUser = async () => {
         try {
           const res = await axios.get(
-            "http://localhost:2000/api/post/search",
+            `${import.meta.env.VITE_API_URL}/api/post/search`,
             {
               params:{
                   username: search

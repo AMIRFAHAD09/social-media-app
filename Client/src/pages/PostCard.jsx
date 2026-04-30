@@ -13,7 +13,7 @@ const likeButton = async(postId)=>{
   // console.log(posts)
   
   try {
-    const res = await axios.put(`http://localhost:2000/api/post/like/${postId}`,
+    const res = await axios.put(`${import.meta.env.VITE_API_URL}/api/post/like/${postId}`,
       {
         userId:userData._id
       }
