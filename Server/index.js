@@ -7,7 +7,7 @@ const postRouter = require("./router/router-post")
 const adminRouter = require("./router/router-admin")
 const connectDB = require("./config/db");
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "https://social-media-app-murex-mu.vercel.app",
     credentials: true
   };
 connectDB();
