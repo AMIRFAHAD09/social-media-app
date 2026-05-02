@@ -28,7 +28,7 @@ export const AuthProvider = ({children})=>{
           } 
         };
         fetchData();
-      }, []);
+      }, [token]);
 
       //get all Post
       const[posts,setPost]= useState([])

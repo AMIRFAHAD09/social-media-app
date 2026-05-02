@@ -11,13 +11,13 @@ function MyProfile() {
     const {token,setToken,userData,setUserData,posts,setPost,searchData,setSearchData} = useAuth();
     const [showMenu, setShowMenu] = useState(false)
     const navigate = useNavigate();
-      const user = {
-        bio: "Frontend Developer 💻 | React Lover ⚛️",
-        posts: 12,
-        // followers: 340,
-        following: 180,
-        image: "https://i.pravatar.cc/150"
-      };
+      // const user = {
+      //   bio: "Frontend Developer 💻 | React Lover ⚛️",
+      //   posts: 12,
+      //   // followers: 340,
+      //   following: 180,
+      //   image: "https://i.pravatar.cc/150"
+      // };
  
   const handleEditProfile = ()=>{
     navigate("/profile")
@@ -64,7 +64,7 @@ function MyProfile() {
               userId: userData._id
             }
           );
-          const updateFollow = res.data.userToFollow.followers;
+          // const updateFollow = res.data.userToFollow.followers;
          const { userToFollow, isFollowing } = res.data;
 
         // ✅ update other user (profile page)
@@ -84,7 +84,7 @@ function MyProfile() {
 
           
           // console.log(userData)
-          console.log(userToFollow)
+          // console.log(userToFollow)
         } catch (error) {
           console.log(error);
         }

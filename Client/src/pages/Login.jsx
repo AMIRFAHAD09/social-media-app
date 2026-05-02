@@ -4,6 +4,7 @@ import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from './authContext';
 import { toast } from 'react-toastify'
 function Login() {
+  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:2000';
     const {userData,setUserData,setToken} = useAuth();
     const[loginData,setLoginData] = useState({
         email:"",
@@ -28,7 +29,7 @@ function Login() {
         
           try {
             const response = await axios.post(
-              `${import.meta.env.VITE_API_URL}/api/auth/login`,
+              `${API_BASE}/api/auth/login`,
               loginData
             );
             //  console.log(response.data)   

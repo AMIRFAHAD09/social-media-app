@@ -7,9 +7,11 @@ const postRouter = require("./router/router-post")
 const adminRouter = require("./router/router-admin")
 const connectDB = require("./config/db");
 const corsOptions = {
-    origin: "https://social-media-app-murex-mu.vercel.app",
-    credentials: true
-  };
+  origin: [
+    "https://social-media-app-murex-mu.vercel.app","http://localhost:5173"
+  ],
+  credentials: true
+};
 connectDB();
 const app= express();
 app.use(express.json());
