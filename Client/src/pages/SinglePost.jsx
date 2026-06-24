@@ -34,53 +34,97 @@ function SinglePost() {
        }
     }
   return (
-    <div className="p-2">
-      {/* <button onClick={() => navigate(-1)} className="mb-4">
-        Go Back
-      </button> */}
+    // <div className="p-2 ">
+    //   {/* <button onClick={() => navigate(-1)} className="mb-4">
+    //     Go Back
+    //   </button> */}
       
-      <div className="flex flex-wrap justify-start gap-4">
+    //   <div className="flex flex-wrap justify-start gap-4">
 
-          <div 
-          className="bg-white shadow-lg rounded-2xl overflow-hidden">
+    //       <div 
+    //       className="bg-white shadow-lg rounded-2xl overflow-hidden">
             
-            <div className="p-2 relative" >
-              <HiDotsVertical  
-              onClick={() => setShowMenu(prev => !prev)}
-              className='absolute top-0 right-0'/>
-              {showMenu && (
-                <div className="absolute top-8 right-2 bg-white shadow-md rounded-lg p-2 z-10">
-                  <button 
-                    onClick={handleDelete}
-                    className="text-red-500 hover:bg-gray-100 px-3 py-1 rounded w-full text-left"
-                  >
-                    Delete
-                  </button>
-                </div>
-              )}
-              <h3 className="font-semibold text-lg">{singlePost.username}</h3>
-              <p className="text-gray-600">{singlePost.text}</p>
-            </div>
+    //         <div className="p-2 relative" >
+    //           <HiDotsVertical  
+    //           onClick={() => setShowMenu(prev => !prev)}
+    //           className='absolute top-0 right-0'/>
+    //           {showMenu && (
+    //             <div className="absolute top-8 right-2 bg-white shadow-md rounded-lg p-2 z-10">
+    //               <button 
+    //                 onClick={handleDelete}
+    //                 className="text-red-500 hover:bg-gray-100 px-3 py-1 rounded w-full text-left"
+    //               >
+    //                 Delete
+    //               </button>
+    //             </div>
+    //           )}
+    //           <h3 className="font-semibold text-lg">{singlePost.username}</h3>
+    //           <p className="text-gray-600">{singlePost.text}</p>
+    //         </div>
 
-            <div className="h-55 ">
-              <img 
-                src={singlePost.image} 
-                alt="post" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+    //         <div className="h-65">
+    //           <img 
+    //             src={singlePost.image} 
+    //             alt="post" 
+    //             className="w-full h-full object-cover"
+    //           />
+    //         </div>
 
-            <div className="px-4 pb-2 flex justify-between text-sm text-gray-500">
-              <span>{new Date(singlePost.createdAt).toLocaleDateString()}</span>
-              <button className="text-red-500">
-                ❤️ {singlePost.likes?.length || 0}
-              </button>
-            </div>
+    //         <div className="px-4 pb-2 flex justify-between text-sm text-gray-500">
+    //           <span>{new Date(singlePost.createdAt).toLocaleDateString()}</span>
+    //           <button className="text-red-500">
+    //             ❤️ {singlePost.likes?.length || 0}
+    //           </button>
+    //         </div>
 
-          </div>
-      </div>
-    </div>
+    //       </div>
+    //   </div>
+    // </div>
     // <h2>{singlePost.username}</h2>
+  <div className="p-2 flex justify-center">
+    <div className="w-full max-w-md bg-white shadow-lg rounded-2xl overflow-hidden">
+
+    {/* Header */}
+      <div className="p-3 relative">
+        <HiDotsVertical  
+          onClick={() => setShowMenu(prev => !prev)}
+          className='absolute top-2 right-2 cursor-pointer'
+        />
+
+        {showMenu && (
+          <div className="absolute top-10 right-2 bg-white shadow-md rounded-lg p-2 z-10">
+            <button 
+              onClick={handleDelete}
+              className="text-red-500 hover:bg-gray-100 px-3 py-1 rounded w-full text-left"
+            >
+              Delete
+            </button>
+          </div>
+        )}
+
+        <h3 className="font-semibold text-lg">{singlePost.username}</h3>
+        <p className="text-gray-600">{singlePost.text}</p>
+      </div>
+
+    {/* Image */}
+    <div className="w-full aspect-square bg-gray-100">
+      <img 
+        src={singlePost.image} 
+        alt="post" 
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    {/* Footer */}
+    <div className="px-4 py-2 flex justify-between text-sm text-gray-500">
+      <span>{new Date(singlePost.createdAt).toLocaleDateString()}</span>
+      <button className="text-red-500">
+        ❤️ {singlePost.likes?.length || 0}
+      </button>
+    </div>
+
+  </div>
+</div>
   );
 }
 

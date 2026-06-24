@@ -1,6 +1,6 @@
 const express = require("express");
-const {Login,Signup,getUser,updateProfile, getSearchUserProfile, follow} = require("../controller/auth-controller");
-const authMiddleware = require('../middleware/auth-middleware')
+const {Login,Signup,getUser,updateProfile, getSearchUserProfile,follow, FollowingGet,FollowerGet} = require("../controller/auth-controller");
+const authMiddleware = require('../middleware/auth-middleware');
 const router = express.Router();
 
 router.post("/register",Signup)
@@ -13,4 +13,8 @@ router.get('/user',authMiddleware,getUser)
 router.get("/user/:id",getSearchUserProfile)
 //follow and unfollow
 router.put("/follow/:id",follow)
+//get following list
+router.post('/followinglist',FollowingGet)
+//get followers list
+router.post("/followerlist",FollowerGet)
 module.exports  = router; 

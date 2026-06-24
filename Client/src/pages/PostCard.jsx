@@ -47,12 +47,12 @@ const likeButton = async(postId)=>{
   return (
    
     <div className="p-2">
-  <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
+    <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
     
     {posts?.map((post) => (
       <div 
         key={post._id} 
-        className="bg-white shadow-md sm:shadow-lg rounded-lg sm:rounded-2xl overflow-hidden w-full"
+        className="bg-white shadow-md sm:shadow-lg rounded-lg sm:rounded-2xl overflow-hidden w-full inset-shadow-sm inset-shadow-indigo-500"
       >
         
         <div onClick={() => navigate(`/mypost/${post._id}`)}>

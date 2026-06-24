@@ -142,4 +142,35 @@ const follow = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-module.exports  = {Signup,Login,getUser,updateProfile,getSearchUserProfile,follow};
+
+//following list
+
+const FollowingGet = async(req,res)=>{
+    const { ids } = req.body;
+    
+ try {
+     const listData = await User.find({
+      _id: { $in: ids }
+    });
+     res.status(200).json(listData)
+ } catch (error) {
+    res.status(500).json({ message: "Server error" });
+    consol.log("not fetch following list")
+ }
+}
+
+//get followers list
+const FollowerGet = async(req,res)=>{
+    const{ids} = req.body;
+    try {
+        const listData = await User.find({
+      _id: { $in: ids }
+    });
+     res.status(200).json(listData)
+    } catch (error) {
+        res.status(500).json({ message: "Server error" });
+    consol.log("not fetch follower list")
+    }
+
+}
+module.exports  = {Signup,Login,getUser,updateProfile,getSearchUserProfile,follow,FollowingGet,FollowerGet};

@@ -14,6 +14,7 @@ import { useAuth } from './pages/authContext';
 import Userlist from './admin/Userlist';
 import Admin from './admin/Admin';
 import AdminProtected from './admin/AdminProtected';
+import FollowersList from './pages/FollowersList';
 
 function App() {
  const {token} = useAuth()
@@ -79,6 +80,14 @@ function App() {
               <SinglePost />
             </ProtectedRoute>}>
        </Route>
+       <Route
+       path='/followerlist'
+       element={
+        <ProtectedRoute>
+          <FollowersList />
+        </ProtectedRoute>
+       }>
+      </Route>
       <Route
        path='/admin'
        element={<Admin/>}>

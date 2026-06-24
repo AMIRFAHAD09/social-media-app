@@ -90,76 +90,100 @@ function MyProfile() {
         }
       };
   return (
-    <div className="max-w-4xl mx-auto p-2">
+  <div className="max-w-4xl mx-auto ">
 
-      {/* 🔹 Top Section */}
-      <div className="relative flex items-center gap-2">
-        {/* logout function */}
-         {!id && <div className="" >
+    <div className="relative">
+          <div className="h-18 sm:h-22 rounded-2xl bg-stone-600">
+             <div className="flex items-center justify-center gap-3">
+              <div className="min-w-[75px] sm:min-w-[90px] bg-gray-800 rounded-xl px-2 py-1 sm:py-2 text-center shadow mt-3">
+                <p className="font-bold text-sm sm:text-lg text-zinc-200">{displayPosts ? displayPosts.length:"0"}</p>
+                <p className=" text-xs text-zinc-200">Post</p>
+              </div>
+               <div
+               onClick={()=>navigate("/followerlist",{ state: { tab: "followers" } })} 
+               className="min-w-[75px] sm:min-w-[90px] bg-gray-800 rounded-xl px-2 py-1 sm:py-2 text-center shadow mt-3">
+                <p className="font-bold text-sm sm:text-lg text-zinc-200">{displayUser? displayUser.followers.length:""}</p>
+                <p className="text-xs text-zinc-200">Followers</p>
+              </div>
+               <div 
+               onClick={()=>navigate("/followerlist",{ state: { tab: "following" } })}
+               className="min-w-[75px] sm:min-w-[90px] bg-gray-800 rounded-xl px-2 py-1 sm:py-2 text-center shadow mt-3">
+                <p className="font-bold text-sm sm:text-lg text-zinc-200">{displayUser? displayUser.following.length:""}</p>
+                <p className="text-xs text-zinc-200">Following</p>
+              </div>
+            </div>
+          </div>
+          <div className="sm:w-20 sm:h-20 md:w-24 md:h-24 absolute -bottom-10 left-4 rounded-full inset-shadow-xl border-2 border-gray-300">
+                {
+                displayUser?.image ? (
+                  <img
+                    src={displayUser.image}
+                    alt="profile"
+                    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full object-cover"
+                  />
+                ) : (
+                  <FaUser className="w-24 h-24 rounded-full p-4 bg-gray-200 text-gray-500" />
+                )
+              }
+          </div>
+          <div>
+            {!id && <div className="" >
           <HiDotsVertical  
           onClick={() => setShowMenu(prev => !prev)}
-          className='absolute top-0 right-0'/>
+          className='absolute top-3 right-1 text-gray-800 text-2xl'/>
           {showMenu && (
-            <div className="absolute top-8 right-2 bg-white shadow-md rounded-lg p-2 z-10">
-              <button 
+             <div className="absolute top-8 right-2 bg-white shadow-md rounded-lg z-10 min-w-[120px]">
+              <button
                 onClick={logoutUser}
-                className="text-red-500 hover:bg-gray-100 px-3 py-1 rounded w-full text-left"
+                className="text-red-500 hover:bg-gray-100 px-3 py-2 w-full text-left"
               >
                 Logout
               </button>
+
+              <div className="border-t border-gray-200"></div>
+
+              <button
+              onClick={()=>navigate("/admin")}
+                className="hover:bg-gray-100 px-3 py-2 w-full text-left"
+              >
+                Admin
+              </button>
             </div>
           )}
-          
-        </div>}
-        {/* Profile Image */}
-        {
-          displayUser?.image ? (
-            <img
-              src={displayUser.image}
-              alt="profile"
-              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full object-cover"
-            />
-          ) : (
-            <FaUser className="w-24 h-24 rounded-full p-4 bg-gray-200 text-gray-500" />
-          )
-        }
 
-        {/* Info */}
-        <div>
-          <h2 className="font-bold text-[15px] sm:text-sm md:text-base truncate">{displayUser?displayUser.username:""}</h2>
-
-          {/* Stats */}
-          <div className="flex gap-4 mt-2 font-semibold text-[10px] sm:text-sm md:text-base truncate">
-            <span><b>{displayPosts ? displayPosts.length:"0"}</b> posts</span>
-            <span><b>{displayUser? displayUser.followers.length:""}</b> followers</span>
-            <span><b>{displayUser? displayUser.following.length:""}</b> following</span>
-            
+            </div>}
           </div>
+    </div>
 
-          {/* Bio */}
-          <p className="mt-2 text-gray-600 font-semibold text-[10px] sm:text-sm md:text-base truncate">{displayUser?displayUser.bio:"developer afk"}</p>
-
-          {/* Button */}
-          {!id && <button
-                onClick={handleEditProfile} 
-                className="mt-3 bg-blue-500 text-white px-4 py-1 rounded-lg hover:bg-blue-600 font-semibold text-[10px] sm:text-sm md:text-base truncate">
-            Edit Profile
-          </button>}
-          {id && <button
-                onClick={followUser}
-                className="mt-3 bg-blue-500 text-white px-4 py-1 rounded-lg hover:bg-blue-600 font-semibold text-[10px] sm:text-sm md:text-base truncate">
-                  {displayUser?.followers?.some(f => f.toString() === userData._id)
-                    ? "Unfollow"
-                    : "Follow"}
-          </button>}
-        </div>
-      </div>
-
+        <div className="flex items-end  justify-start px-2 gap-5">
+          <div className="mt-12 px-4">
+            {/* username */}
+            <h2 className="text-xl font-bold">{displayUser?displayUser.username:""}</h2>
+            {/* {Bio} */}
+            <p className="text-sm text-gray-400">{displayUser?displayUser.bio:"developer afk"}</p>
+          </div>
+            {/* Button */}
+            <div>
+            {!id && <button
+                  onClick={handleEditProfile} 
+                  className="mb-1 bg-blue-500 text-white px-4 py-1  rounded-lg hover:bg-blue-600 font-semibold text-[10px] sm:text-sm md:text-base truncate">
+              Edit Profile
+            </button>}
+            {id && <button
+                  onClick={followUser}
+                  className="mb-1 bg-blue-500 text-white px-4 py-1 rounded-lg hover:bg-blue-600 font-semibold text-[10px] sm:text-sm md:text-base truncate">
+                    {displayUser?.followers?.some(f => f.toString() === userData._id)
+                      ? "Unfollow"
+                      : "Follow"}
+            </button>}
+           </div>
+           
+         </div>
       {/* 🔹 Divider */}
-      <hr className="my-6" />
+      <hr className="my-" />
 
       {/* 🔹 Posts Grid */}
-      <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">
+      <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))] mt-6">
         
        
         <PostCard 
